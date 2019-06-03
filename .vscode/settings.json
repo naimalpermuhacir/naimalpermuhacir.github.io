@@ -1,0 +1,7 @@
+{
+    "editor.fontSize": 13,
+    "files.autoSaveDelay": 10000,
+    "editor.tabCompletion": "on",
+    "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "Bluloco Dark"
+}
