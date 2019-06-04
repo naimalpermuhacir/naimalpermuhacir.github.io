@@ -1,9 +1,24 @@
 
   <ul class="faul">
 <p class="lead"><h4>Links</h4></p>
+
+<br>
+<br>
+{% if site.github_username %}
+<li>
+   <a href="https://github.com/{{ site.github_username }}" data-toggle="tooltip" title="Github" style="
+color:#877070;font-size:.25em;text-decoration:none;">
+      <span class="fa-stack fa-lg">
+         <i class="fa fa-circle fa-stack-2x"></i>
+         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+   </a>
+</li>
+{% endif %}
+<br>
                       {% if site.twitter_username %}
                     <li>
- <a href="https://twitter.com/{{ site.twitter_username }}"  data-toggle="tooltip" title="Twiiter" style="
+ <a href="https://twitter.com/{{ site.twitter_username }}"  data-toggle="tooltip" title="Twitter" style="
 color:#877070;font-size:.25em;text-decoration:none;">
        <span class="fa-stack fa-lg">
            <i class="fa fa-circle fa-stack-2x"></i>
@@ -14,7 +29,7 @@ color:#877070;font-size:.25em;text-decoration:none;">
                     {% endif %}
 
 
-                    {% if site.facebook_username %}
+                    <!-- {% if site.facebook_username %}
                     <li>
                         <a href="https://www.facebook.com/{{ site.facebook_username }}" data-toggle="tooltip" title="Facebook" style="
 color:#877070;font-size:.25em;text-decoration:none;">
@@ -25,19 +40,9 @@ color:#877070;font-size:.25em;text-decoration:none;">
                         </a>
 
                     </li>
-                    {% endif %}
+                    {% endif %} -->
 
-                    {% if site.github_username %}
-                    <li>
-   <a href="https://github.com/{{ site.github_username }}" data-toggle="tooltip" title="Github" style="
-color:#877070;font-size:.25em;text-decoration:none;">
-         <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                     </span>
-                        </a>
-                    </li>
-                   {% endif %}
+                    
 
 {% if site.instagram_username %}
                     <li>
@@ -50,8 +55,10 @@ color:#877070;font-size:.25em;text-decoration:none;">
                         </a>
                     </li>
                    {% endif %}
-
-{% if site.flickr_username %}
+<br>
+<br>
+<br>
+<!-- {% if site.flickr_username %}
                     <li>
    <a href="https://flickr.com/photos/{{ site.flickr_username }}" data-toggle="tooltip" title="Flickr" style="
 color:#877070;font-size:.25em;text-decoration:none;">
@@ -61,9 +68,9 @@ color:#877070;font-size:.25em;text-decoration:none;">
                      </span>
                         </a>
                     </li>
-                   {% endif %}
+                   {% endif %} -->
 
-{% if site.500px_username %}
+<!-- {% if site.500px_username %}
                     <li>
    <a href="https://500px.com/{{ site.500px_username }}" data-toggle="tooltip" title="500px" style="
 color:#877070;font-size:.25em;text-decoration:none;">
@@ -73,9 +80,9 @@ color:#877070;font-size:.25em;text-decoration:none;">
                      </span>
                         </a>
                     </li>
-                   {% endif %}
+                   {% endif %} -->
 
-{% if site.deviantart_username %}
+<!-- {% if site.deviantart_username %}
                     <li>
    <a href="http://{{ site.deviantart_username }}.deviantart.com" data-toggle="tooltip" title="Deviantart" style="
 color:#877070;font-size:.25em;text-decoration:none;">
@@ -85,11 +92,11 @@ color:#877070;font-size:.25em;text-decoration:none;">
                      </span>
                         </a>
                     </li>
-                   {% endif %}
+                   {% endif %} -->
 
 
      <li>
-    <a href="mailto:mad@ness.com" data-toggle="tooltip" target="_blank" title="Email" style="
+    <a href="mailto:alpermuhacir@outlook.com" data-toggle="tooltip" target="_blank" title="Email" style="
 color:#877070;font-size:.25em;text-decoration:none;">
       <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i> 
