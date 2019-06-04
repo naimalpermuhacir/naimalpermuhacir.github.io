@@ -1,7 +1,7 @@
 {
-  "name": "madness",
+  "name": "alpermuhacir",
   "version": "1.0.0",
-  "description": "madforjekyll",
+  "description": "themeV1",
   "main": "Gruntfile.js",
   "dependencies": {
     "magnific-popup": "^1.0.0"
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/sunbliss/sunbliss.github.io.git"
   },
-  "author": "madness",
+  "author": "alpermuhacir",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sunbliss/sunbliss.github.io/issues"
