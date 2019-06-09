@@ -14,7 +14,7 @@ categories: [cat01, cat02]
 
 ## Typography Elements
 
-This is a paragraph. **This text is bolded.** This text is normal! _This text is italic._ We can  also **_combine_** them. A highlighted code looks like `ThisIsMyCode()`. This text is a [hyperlink](#) or [http://www.example.com](http://www.example.com).
+This is a paragraph. **This text is bolded.** This text is normal! _This text is italic._ We can  also **_combine_** them. A highlighted code looks like `ThisIsMyCode()`. This text is a [hyperlink](#) or [https://www.example.com](https://www.example.com).
 
 ___
 
@@ -124,11 +124,11 @@ ___
 
 ### Image
 
-![Spectrocat](http://octodex.github.com/images/spectrocat.png)
+![Spectrocat](https://octodex.github.com/images/spectrocat.png)
 
 <br>
 
-## For a more detailed syntax with Markdown, please visit [DaringFireball.net](http://daringfireball.net/projects/markdown/syntax)
+## For a more detailed syntax with Markdown, please visit [DaringFireball.net](https://daringfireball.net/projects/markdown/syntax)
 
 ###### Image Source: [UNSPLASH](https://unsplash.com/photos/6g0KJWnBhxg)
 
