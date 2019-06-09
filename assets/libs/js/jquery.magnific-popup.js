@@ -1581,15 +1581,15 @@ $.magnificPopup.registerModule(IFRAME_NS, {
 			youtube: {
 				index: 'youtube.com',
 				id: 'v=',
-				src: 'https://www.youtube.com/embed/%id%?autoplay=1'
+				src: '//www.youtube.com/embed/%id%?autoplay=1'
 			},
 			vimeo: {
 				index: 'vimeo.com/',
 				id: '/',
-				src: 'https://player.vimeo.com/video/%id%?autoplay=1'
+				src: '//player.vimeo.com/video/%id%?autoplay=1'
 			},
 			gmaps: {
-				index: 'https://maps.google.',
+				index: '//maps.google.',
 				src: '%id%&output=embed'
 			}
 		}
