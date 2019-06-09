@@ -26,7 +26,7 @@ wpm: 200
 owner:
   name:   alpermuhacir
   avatar: avatar.jpg
-  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
+  # Use the coder's toolbox at https://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Description
 
 # Social networking links used in footer. Update and remove as you like.
