@@ -2,8 +2,8 @@
 layout:     post
 title:      "Multiple Galleries"
 subtitle:   "A post with multiple galleries arranged with ISOTOPE"
-date:       2015-11-23 12:00:00
-author:     "MADness"
+date:       2017-11-23 12:00:00
+author:     "alpermuhacir"
 header-img: "assets/owner/blog/header/post-bg-01.jpg"
 thumbnail: /assets/owner/blog/thumbs/thumb01.png
 tags: [tag-name-one, tag-name-two]
@@ -13,23 +13,23 @@ share: false
 gallery1: 
   - image_path: /assets/owner/blog/galleries/g01/bg1.jpg
     image-caption: IMAGE TITLE
-    image-copyright: © MADness
+    image-copyright: © alpmhcr
   - image_path: /assets/owner/blog/galleries/g01/bg2.jpg
     image-caption: IMAGE TITLE
-    image-copyright: © MADness
+    image-copyright: © alpmhcr
   - image_path: /assets/owner/blog/galleries/g01/bg3.jpg
     image-caption: IMAGE TITLE
-    image-copyright: © MADness 
+    image-copyright: © alpmhcr 
 gallery2: 
   - image_path: /assets/owner/blog/galleries/g02/bg1.jpg
     image-caption: IMAGE TITLE
-    image-copyright: © MADness
+    image-copyright: © alpmhcr
   - image_path: /assets/owner/blog/galleries/g02/bg2.jpg
     image-caption: IMAGE TITLE
-    image-copyright: © MADness
+    image-copyright: © alpmhcr
   - image_path: /assets/owner/blog/galleries/g02/bg3.jpg
     image-caption: IMAGE TITLE
-    image-copyright: © MADness 
+    image-copyright: © alpmhcr 
 ---
 
 <p> Content of your post HERE </p>
