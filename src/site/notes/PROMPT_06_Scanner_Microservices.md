@@ -1,0 +1,355 @@
+---
+tags:
+  - prompt
+  - backend
+  - bugzora
+aliases:
+  - Scanner Prompt
+parent: "[[03_Yazilim_Mimarisi]]"
+dg-publish: true
+---
+
+# PROMPT 06 - Scanner Microservices Integration
+
+> **📎 Referans Dosyalar** — Bu promptu kullanmadan önce aşağıdaki dokümanları bağlam olarak ekle:
+> - `@03_Yazilim_Mimarisi.md` — Scanner servislerinin mimarideki yeri, job queue, event-driven iletişim
+> - `@05_Veritabani_Tasarimi.md` — scan_jobs, scan_results, sbom_files tablo şemaları
+> - `@06_API_Tasarimi.md` — Scan Job endpoint'leri, webhook callback'ler, SBOM endpoint'leri
+> - `@08_SaaS_Modeli_Fiyatlandirma.md` — Plan bazlı scan limitleri ve quota enforcement
+> - `@07_Guvenlik_Mimarisi.md` — Tenant izolasyonu, scan sonuçlarına erişim kontrolü
+
+You are a senior Go platform engineer integrating existing scanner microservices into a SaaS control plane.
+Wrap BugZora-ImageScan, BugZora-FileScan and BugZora-RepoScan as REST/gRPC-integrated services.
+
+## Goals
+- Async job execution
+- Queue-based processing
+- Tenant-aware quotas
+- Result persistence
+- Callback support
+- Caching
+
+## Integration Requirements
+- Define adapter interfaces for each scanner.
+- Normalize result schemas.
+- Implement job lifecycle states.
+- Store summaries and raw findings.
+- Emit domain events.
+
+## Queue Requirements
+- Use Redis queue or Kafka abstraction.
+- Support retries, dead-letter handling, cancellation and idempotency.
+
+## APIs
+- Create scan job
+- Get status
+- Cancel job
+- Get findings
+- Register webhook callback
+
+## Performance Requirements
+- Avoid blocking HTTP handlers.
+- Support horizontal worker scaling.
+- Cache repeated image scan metadata where safe.
+
+## Output Expectations
+- Provide implementation, worker design, tests and local dev setup.
+- Instruction 001: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 002: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 003: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 004: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 005: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 006: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 007: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 008: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 009: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 010: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 011: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 012: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 013: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 014: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 015: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 016: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 017: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 018: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 019: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 020: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 021: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 022: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 023: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 024: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 025: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 026: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 027: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 028: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 029: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 030: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 031: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 032: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 033: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 034: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 035: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 036: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 037: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 038: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 039: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 040: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 041: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 042: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 043: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 044: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 045: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 046: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 047: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 048: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 049: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 050: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 051: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 052: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 053: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 054: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 055: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 056: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 057: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 058: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 059: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 060: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 061: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 062: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 063: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 064: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 065: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 066: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 067: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 068: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 069: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 070: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 071: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 072: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 073: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 074: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 075: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 076: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 077: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 078: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 079: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 080: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 081: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 082: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 083: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 084: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 085: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 086: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 087: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 088: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 089: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 090: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 091: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 092: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 093: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 094: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 095: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 096: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 097: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 098: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 099: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 100: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 101: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 102: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 103: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 104: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 105: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 106: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 107: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 108: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 109: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 110: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 111: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 112: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 113: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 114: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 115: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 116: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 117: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 118: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 119: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 120: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 121: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 122: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 123: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 124: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 125: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 126: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 127: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 128: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 129: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 130: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 131: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 132: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 133: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 134: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 135: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 136: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 137: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 138: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 139: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 140: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 141: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 142: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 143: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 144: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 145: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 146: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 147: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 148: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 149: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 150: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 151: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 152: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 153: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 154: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 155: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 156: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 157: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 158: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 159: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 160: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 161: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 162: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 163: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 164: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 165: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 166: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 167: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 168: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 169: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 170: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 171: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 172: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 173: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 174: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 175: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 176: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 177: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 178: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 179: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 180: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 181: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 182: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 183: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 184: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 185: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 186: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 187: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 188: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 189: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 190: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 191: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 192: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 193: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 194: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 195: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 196: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 197: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 198: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 199: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 200: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 201: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 202: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 203: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 204: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 205: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 206: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 207: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 208: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 209: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 210: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 211: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 212: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 213: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 214: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 215: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 216: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 217: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 218: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 219: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 220: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 221: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 222: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 223: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 224: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 225: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 226: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 227: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 228: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 229: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 230: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 231: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 232: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 233: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 234: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 235: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 236: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 237: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 238: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 239: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 240: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 241: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 242: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 243: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 244: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 245: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 246: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 247: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 248: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 249: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 250: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 251: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 252: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 253: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 254: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 255: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 256: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 257: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 258: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 259: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 260: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 261: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 262: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 263: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 264: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 265: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 266: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 267: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 268: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 269: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 270: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 271: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 272: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 273: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 274: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 275: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 276: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 277: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 278: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 279: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 280: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 281: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 282: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 283: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 284: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 285: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 286: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 287: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 288: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 289: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+- Instruction 290: preserve scanner boundaries, add strong observability, and document failure handling for each adapter and queue transition.
+
+
+---
+
+## 🔗 İlgili Notlar
+
+- [[03_Yazilim_Mimarisi]]
+- [[05_Veritabani_Tasarimi]]
+- [[04_Altyapi_Mimarisi]]
