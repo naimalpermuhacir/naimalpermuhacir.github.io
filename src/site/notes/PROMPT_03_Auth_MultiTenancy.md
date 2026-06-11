@@ -1,0 +1,371 @@
+---
+tags:
+  - prompt
+  - guvenlik
+  - bugzora
+aliases:
+  - Auth Prompt
+parent: "[[07_Guvenlik_Mimarisi]]"
+dg-publish: true
+---
+
+# PROMPT 03 - Auth and Multi-Tenancy
+
+> **📎 Referans Dosyalar** — Bu promptu kullanmadan önce aşağıdaki dokümanları bağlam olarak ekle:
+> - `@07_Guvenlik_Mimarisi.md` — Auth mimarisi, RBAC/ABAC modeli, rol tanımları, permission matrix
+> - `@05_Veritabani_Tasarimi.md` — tenants, users, api_keys, audit_logs tablo şemaları
+> - `@08_SaaS_Modeli_Fiyatlandirma.md` — Tenant tipleri, plan bazlı kısıtlamalar
+> - `@03_Yazilim_Mimarisi.md` — Auth Service, Tenant Management Service bölümleri
+
+You are a senior backend security engineer focused on authentication, authorization and SaaS multi-tenancy.
+Design and implement the BugZora auth and multi-tenant isolation system.
+
+## Core Goal
+- Secure tenant isolation for a SaaS security scanning platform.
+
+## Decision Requirements
+- Evaluate schema-per-tenant vs row-level security.
+- Recommend one approach and justify it.
+- Implement tenant-aware data access patterns.
+
+## Mandatory Features
+- JWT access tokens
+- Refresh tokens
+- API keys
+- OAuth2/OIDC with Google/GitHub/GitLab/Microsoft
+- SAML 2.0 placeholders for enterprise SSO
+- RBAC
+- Per-tenant rate limiting
+
+## Security Rules
+- Hash refresh tokens or store revocable identifiers.
+- Protect against token replay.
+- Support logout everywhere.
+- Add MFA hooks.
+- Add brute-force protection.
+
+## Data Model
+- tenants
+- users
+- user_roles
+- api_keys
+- sessions
+- oauth_accounts
+- saml_connections
+- audit_logs
+
+## API Requirements
+- Login
+- Logout
+- Refresh
+- Invite user
+- Rotate API key
+- List sessions
+- Revoke session
+- Configure SSO
+
+## RBAC Requirements
+- Roles: Super Admin, Tenant Admin, Security Engineer, Developer, Viewer, Auditor.
+- Add permission constants and policy checks.
+
+## Output Expectations
+- Provide implementation plan, code, migrations, tests and security notes.
+- Instruction 001: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 002: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 003: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 004: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 005: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 006: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 007: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 008: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 009: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 010: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 011: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 012: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 013: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 014: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 015: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 016: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 017: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 018: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 019: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 020: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 021: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 022: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 023: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 024: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 025: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 026: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 027: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 028: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 029: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 030: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 031: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 032: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 033: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 034: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 035: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 036: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 037: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 038: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 039: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 040: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 041: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 042: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 043: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 044: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 045: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 046: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 047: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 048: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 049: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 050: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 051: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 052: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 053: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 054: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 055: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 056: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 057: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 058: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 059: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 060: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 061: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 062: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 063: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 064: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 065: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 066: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 067: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 068: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 069: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 070: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 071: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 072: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 073: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 074: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 075: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 076: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 077: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 078: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 079: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 080: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 081: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 082: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 083: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 084: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 085: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 086: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 087: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 088: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 089: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 090: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 091: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 092: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 093: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 094: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 095: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 096: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 097: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 098: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 099: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 100: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 101: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 102: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 103: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 104: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 105: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 106: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 107: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 108: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 109: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 110: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 111: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 112: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 113: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 114: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 115: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 116: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 117: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 118: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 119: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 120: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 121: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 122: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 123: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 124: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 125: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 126: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 127: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 128: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 129: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 130: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 131: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 132: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 133: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 134: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 135: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 136: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 137: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 138: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 139: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 140: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 141: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 142: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 143: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 144: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 145: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 146: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 147: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 148: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 149: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 150: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 151: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 152: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 153: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 154: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 155: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 156: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 157: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 158: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 159: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 160: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 161: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 162: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 163: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 164: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 165: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 166: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 167: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 168: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 169: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 170: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 171: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 172: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 173: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 174: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 175: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 176: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 177: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 178: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 179: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 180: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 181: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 182: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 183: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 184: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 185: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 186: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 187: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 188: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 189: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 190: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 191: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 192: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 193: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 194: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 195: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 196: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 197: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 198: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 199: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 200: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 201: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 202: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 203: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 204: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 205: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 206: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 207: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 208: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 209: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 210: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 211: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 212: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 213: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 214: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 215: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 216: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 217: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 218: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 219: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 220: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 221: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 222: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 223: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 224: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 225: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 226: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 227: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 228: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 229: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 230: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 231: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 232: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 233: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 234: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 235: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 236: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 237: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 238: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 239: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 240: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 241: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 242: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 243: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 244: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 245: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 246: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 247: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 248: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 249: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 250: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 251: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 252: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 253: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 254: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 255: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 256: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 257: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 258: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 259: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 260: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 261: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 262: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 263: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 264: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 265: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 266: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 267: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 268: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 269: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 270: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 271: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 272: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 273: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 274: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 275: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 276: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 277: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 278: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 279: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 280: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 281: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 282: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 283: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 284: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 285: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 286: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 287: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 288: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 289: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+- Instruction 290: make every auth flow tenant-aware, auditable, rate-limited, and resilient to common SaaS isolation failures.
+
+
+---
+
+## 🔗 İlgili Notlar
+
+- [[07_Guvenlik_Mimarisi]]
+- [[05_Veritabani_Tasarimi]]
+- [[01_Is_Analizi]]
