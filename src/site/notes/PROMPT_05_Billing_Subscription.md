@@ -1,0 +1,365 @@
+---
+tags:
+  - prompt
+  - fiyatlandirma
+  - bugzora
+aliases:
+  - Billing Prompt
+parent: "[[08_SaaS_Modeli_Fiyatlandirma]]"
+dg-publish: true
+---
+
+# PROMPT 05 - Billing and Subscription
+
+> **📎 Referans Dosyalar** — Bu promptu kullanmadan önce aşağıdaki dokümanları bağlam olarak ekle:
+> - `@08_SaaS_Modeli_Fiyatlandirma.md` — Fiyat planları, özellik matrisi, add-on'lar, On-Premise lisans modeli
+> - `@05_Veritabani_Tasarimi.md` — subscriptions, invoices, payments tablo şemaları
+> - `@06_API_Tasarimi.md` — Billing endpoint'leri, webhook payload örnekleri
+> - `@03_Yazilim_Mimarisi.md` — Billing Service bölümü
+
+You are a senior backend developer with deep SaaS billing experience.
+Build the BugZora billing and subscription system.
+
+## Requirements
+- Stripe subscriptions
+- Stripe webhooks
+- Plan catalog
+- Usage metering
+- Quota enforcement
+- Invoice tracking
+- Dunning management
+- Upgrade and downgrade flows
+- On-prem license key generation and validation
+
+## Plans
+- Free
+- Starter
+- Professional
+- Enterprise
+- On-Prem License
+
+## Mandatory Flows
+- Start trial
+- Upgrade from free
+- Change billing cycle monthly/yearly
+- Handle failed payment
+- Suspend or reduce service after grace period
+- Restore service after payment recovery
+
+## Data Requirements
+- subscriptions
+- invoices
+- payments
+- usage_counters
+- license_keys
+- billing_events
+
+## API Requirements
+- Create checkout session
+- Get current subscription
+- Preview plan change
+- Handle Stripe webhook
+- List invoices
+- Validate on-prem license
+
+## Output Expectations
+- Provide code, migrations, tests, webhook replay safety and idempotency.
+- Instruction 001: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 002: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 003: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 004: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 005: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 006: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 007: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 008: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 009: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 010: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 011: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 012: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 013: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 014: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 015: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 016: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 017: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 018: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 019: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 020: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 021: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 022: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 023: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 024: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 025: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 026: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 027: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 028: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 029: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 030: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 031: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 032: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 033: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 034: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 035: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 036: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 037: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 038: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 039: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 040: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 041: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 042: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 043: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 044: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 045: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 046: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 047: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 048: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 049: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 050: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 051: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 052: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 053: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 054: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 055: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 056: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 057: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 058: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 059: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 060: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 061: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 062: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 063: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 064: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 065: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 066: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 067: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 068: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 069: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 070: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 071: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 072: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 073: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 074: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 075: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 076: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 077: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 078: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 079: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 080: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 081: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 082: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 083: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 084: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 085: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 086: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 087: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 088: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 089: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 090: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 091: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 092: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 093: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 094: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 095: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 096: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 097: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 098: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 099: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 100: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 101: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 102: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 103: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 104: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 105: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 106: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 107: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 108: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 109: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 110: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 111: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 112: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 113: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 114: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 115: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 116: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 117: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 118: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 119: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 120: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 121: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 122: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 123: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 124: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 125: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 126: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 127: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 128: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 129: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 130: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 131: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 132: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 133: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 134: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 135: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 136: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 137: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 138: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 139: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 140: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 141: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 142: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 143: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 144: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 145: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 146: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 147: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 148: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 149: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 150: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 151: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 152: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 153: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 154: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 155: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 156: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 157: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 158: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 159: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 160: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 161: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 162: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 163: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 164: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 165: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 166: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 167: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 168: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 169: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 170: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 171: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 172: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 173: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 174: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 175: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 176: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 177: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 178: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 179: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 180: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 181: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 182: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 183: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 184: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 185: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 186: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 187: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 188: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 189: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 190: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 191: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 192: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 193: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 194: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 195: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 196: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 197: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 198: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 199: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 200: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 201: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 202: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 203: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 204: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 205: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 206: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 207: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 208: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 209: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 210: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 211: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 212: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 213: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 214: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 215: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 216: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 217: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 218: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 219: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 220: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 221: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 222: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 223: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 224: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 225: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 226: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 227: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 228: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 229: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 230: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 231: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 232: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 233: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 234: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 235: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 236: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 237: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 238: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 239: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 240: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 241: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 242: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 243: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 244: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 245: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 246: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 247: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 248: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 249: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 250: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 251: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 252: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 253: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 254: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 255: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 256: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 257: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 258: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 259: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 260: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 261: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 262: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 263: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 264: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 265: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 266: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 267: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 268: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 269: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 270: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 271: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 272: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 273: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 274: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 275: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 276: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 277: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 278: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 279: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 280: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 281: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 282: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 283: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 284: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 285: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 286: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 287: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 288: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 289: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+- Instruction 290: keep billing state transitions explicit, auditable, and safe under webhook retries or out-of-order events.
+
+
+---
+
+## 🔗 İlgili Notlar
+
+- [[08_SaaS_Modeli_Fiyatlandirma]]
+- [[05_Veritabani_Tasarimi]]
+- [[01_Is_Analizi]]
