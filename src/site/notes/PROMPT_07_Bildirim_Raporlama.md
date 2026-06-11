@@ -1,0 +1,356 @@
+---
+tags:
+  - prompt
+  - backend
+  - bugzora
+aliases:
+  - Notification Prompt
+parent: "[[06_API_Tasarimi]]"
+dg-publish: true
+---
+
+# PROMPT 07 - Notification and Reporting
+
+> **📎 Referans Dosyalar** — Bu promptu kullanmadan önce aşağıdaki dokümanları bağlam olarak ekle:
+> - `@03_Yazilim_Mimarisi.md` — Notification Service ve Report Service bölümleri
+> - `@05_Veritabani_Tasarimi.md` — notifications, reports tabloları ve şemaları
+> - `@06_API_Tasarimi.md` — Notification ve Report endpoint'leri
+> - `@09_UI_UX_Tasarimi.md` — Rapor builder UI, bildirim tercihleri sayfası
+> - `@08_SaaS_Modeli_Fiyatlandirma.md` — Plan bazlı rapor ve bildirim limitleri
+
+You are a senior backend engineer building notification and reporting capabilities for a SaaS security platform.
+Implement BugZora notification and reporting services.
+
+## Scope
+- Email notifications
+- Slack and Teams webhooks
+- PagerDuty integration
+- PDF report generation
+- Scheduled weekly/monthly reports
+- Template system
+- Notification preferences
+- Jira ticket creation
+
+## Technical Requirements
+- Go service architecture.
+- Background jobs for scheduled reports.
+- HTML-to-PDF pipeline using wkhtmltopdf or puppeteer integration.
+- Object storage for generated files.
+- Audit logging for report downloads.
+
+## Data Model
+- notification_preferences
+- notifications
+- report_templates
+- report_jobs
+- reports
+- jira_tickets
+
+## API Requirements
+- CRUD for notification settings
+- Trigger report generation
+- List and download reports
+- Test integration connections
+- Schedule and unschedule reports
+
+## Output Expectations
+- Provide code, templates, tests, example payloads and retry logic.
+- Instruction 001: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 002: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 003: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 004: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 005: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 006: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 007: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 008: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 009: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 010: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 011: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 012: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 013: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 014: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 015: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 016: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 017: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 018: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 019: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 020: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 021: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 022: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 023: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 024: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 025: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 026: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 027: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 028: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 029: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 030: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 031: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 032: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 033: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 034: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 035: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 036: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 037: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 038: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 039: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 040: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 041: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 042: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 043: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 044: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 045: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 046: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 047: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 048: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 049: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 050: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 051: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 052: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 053: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 054: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 055: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 056: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 057: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 058: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 059: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 060: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 061: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 062: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 063: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 064: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 065: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 066: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 067: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 068: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 069: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 070: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 071: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 072: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 073: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 074: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 075: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 076: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 077: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 078: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 079: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 080: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 081: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 082: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 083: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 084: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 085: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 086: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 087: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 088: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 089: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 090: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 091: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 092: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 093: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 094: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 095: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 096: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 097: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 098: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 099: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 100: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 101: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 102: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 103: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 104: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 105: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 106: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 107: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 108: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 109: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 110: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 111: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 112: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 113: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 114: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 115: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 116: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 117: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 118: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 119: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 120: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 121: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 122: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 123: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 124: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 125: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 126: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 127: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 128: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 129: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 130: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 131: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 132: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 133: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 134: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 135: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 136: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 137: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 138: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 139: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 140: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 141: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 142: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 143: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 144: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 145: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 146: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 147: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 148: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 149: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 150: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 151: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 152: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 153: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 154: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 155: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 156: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 157: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 158: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 159: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 160: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 161: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 162: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 163: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 164: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 165: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 166: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 167: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 168: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 169: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 170: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 171: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 172: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 173: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 174: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 175: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 176: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 177: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 178: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 179: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 180: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 181: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 182: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 183: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 184: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 185: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 186: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 187: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 188: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 189: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 190: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 191: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 192: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 193: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 194: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 195: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 196: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 197: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 198: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 199: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 200: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 201: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 202: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 203: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 204: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 205: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 206: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 207: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 208: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 209: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 210: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 211: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 212: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 213: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 214: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 215: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 216: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 217: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 218: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 219: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 220: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 221: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 222: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 223: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 224: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 225: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 226: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 227: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 228: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 229: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 230: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 231: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 232: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 233: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 234: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 235: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 236: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 237: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 238: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 239: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 240: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 241: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 242: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 243: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 244: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 245: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 246: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 247: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 248: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 249: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 250: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 251: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 252: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 253: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 254: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 255: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 256: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 257: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 258: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 259: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 260: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 261: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 262: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 263: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 264: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 265: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 266: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 267: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 268: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 269: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 270: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 271: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 272: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 273: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 274: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 275: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 276: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 277: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 278: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 279: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 280: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 281: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 282: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 283: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 284: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 285: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 286: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 287: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 288: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 289: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+- Instruction 290: design for reliability, deduplication, auditability, configurable routing, and tenant-specific branding in every report output.
+
+
+---
+
+## 🔗 İlgili Notlar
+
+- [[03_Yazilim_Mimarisi]]
+- [[05_Veritabani_Tasarimi]]
+- [[06_API_Tasarimi]]
