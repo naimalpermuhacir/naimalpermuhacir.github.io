@@ -1,0 +1,362 @@
+---
+tags:
+  - prompt
+  - altyapi
+  - bugzora
+aliases:
+  - Kubernetes Prompt
+parent: "[[04_Altyapi_Mimarisi]]"
+dg-publish: true
+---
+
+# PROMPT 04 - Kubernetes Infrastructure
+
+> **📎 Referans Dosyalar** — Bu promptu kullanmadan önce aşağıdaki dokümanları bağlam olarak ekle:
+> - `@04_Altyapi_Mimarisi.md` — Kubernetes tasarımı, namespace stratejisi, Helm, ArgoCD, monitoring, storage
+> - `@03_Yazilim_Mimarisi.md` — Tüm microservice listesi, port ve bağımlılık haritası
+> - `@10_DevOps_CI_CD.md` — GitOps workflow, CI/CD pipeline, environment stratejisi
+> - `@07_Guvenlik_Mimarisi.md` — Network policy, Secrets Management, Zero Trust gereksinimleri
+> - `@08_SaaS_Modeli_Fiyatlandirma.md` — On-Premise kurulum gereksinimleri
+
+You are a senior platform engineer and Kubernetes architect.
+Build the Kubernetes, Helm and ArgoCD infrastructure for BugZora.
+
+## Scope
+- Helm chart hierarchy
+- Kubernetes manifests
+- ArgoCD applications
+- Monitoring objects
+- Secrets integration
+- On-prem and cloud values examples
+
+## Mandatory Manifests
+- Deployment
+- StatefulSet where needed
+- Service
+- Ingress
+- HPA
+- PDB
+- NetworkPolicy
+- ServiceAccount
+- RBAC
+- ExternalSecret
+- ServiceMonitor
+
+## Helm Requirements
+- Root chart plus subcharts.
+- Values schema.
+- Sensible defaults.
+- Environment overlays.
+
+## ArgoCD Requirements
+- App-of-apps.
+- Dev/staging/prod examples.
+- Sync waves and health checks.
+
+## Security Requirements
+- Non-root containers.
+- Read-only root filesystem where possible.
+- Tight network policies.
+- Secret references from Vault via External Secrets Operator.
+
+## Output Expectations
+- Return full chart structure, sample values, manifests and deployment instructions.
+- Instruction 001: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 002: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 003: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 004: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 005: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 006: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 007: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 008: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 009: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 010: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 011: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 012: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 013: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 014: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 015: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 016: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 017: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 018: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 019: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 020: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 021: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 022: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 023: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 024: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 025: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 026: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 027: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 028: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 029: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 030: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 031: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 032: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 033: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 034: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 035: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 036: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 037: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 038: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 039: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 040: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 041: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 042: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 043: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 044: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 045: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 046: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 047: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 048: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 049: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 050: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 051: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 052: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 053: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 054: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 055: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 056: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 057: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 058: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 059: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 060: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 061: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 062: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 063: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 064: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 065: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 066: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 067: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 068: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 069: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 070: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 071: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 072: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 073: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 074: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 075: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 076: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 077: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 078: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 079: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 080: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 081: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 082: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 083: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 084: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 085: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 086: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 087: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 088: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 089: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 090: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 091: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 092: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 093: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 094: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 095: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 096: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 097: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 098: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 099: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 100: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 101: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 102: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 103: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 104: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 105: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 106: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 107: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 108: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 109: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 110: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 111: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 112: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 113: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 114: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 115: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 116: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 117: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 118: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 119: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 120: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 121: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 122: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 123: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 124: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 125: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 126: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 127: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 128: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 129: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 130: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 131: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 132: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 133: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 134: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 135: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 136: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 137: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 138: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 139: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 140: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 141: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 142: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 143: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 144: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 145: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 146: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 147: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 148: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 149: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 150: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 151: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 152: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 153: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 154: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 155: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 156: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 157: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 158: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 159: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 160: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 161: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 162: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 163: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 164: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 165: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 166: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 167: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 168: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 169: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 170: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 171: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 172: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 173: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 174: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 175: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 176: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 177: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 178: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 179: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 180: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 181: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 182: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 183: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 184: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 185: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 186: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 187: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 188: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 189: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 190: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 191: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 192: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 193: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 194: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 195: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 196: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 197: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 198: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 199: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 200: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 201: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 202: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 203: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 204: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 205: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 206: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 207: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 208: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 209: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 210: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 211: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 212: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 213: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 214: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 215: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 216: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 217: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 218: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 219: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 220: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 221: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 222: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 223: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 224: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 225: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 226: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 227: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 228: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 229: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 230: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 231: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 232: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 233: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 234: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 235: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 236: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 237: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 238: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 239: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 240: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 241: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 242: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 243: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 244: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 245: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 246: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 247: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 248: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 249: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 250: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 251: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 252: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 253: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 254: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 255: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 256: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 257: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 258: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 259: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 260: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 261: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 262: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 263: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 264: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 265: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 266: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 267: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 268: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 269: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 270: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 271: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 272: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 273: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 274: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 275: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 276: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 277: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 278: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 279: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 280: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 281: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 282: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 283: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 284: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 285: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 286: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 287: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 288: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 289: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+- Instruction 290: include production-safe defaults, clear comments, reusable templates, and examples for AWS EKS, GCP GKE and on-prem clusters.
+
+
+---
+
+## 🔗 İlgili Notlar
+
+- [[04_Altyapi_Mimarisi]]
+- [[03_Yazilim_Mimarisi]]
+- [[10_DevOps_CI_CD]]
